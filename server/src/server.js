@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { logger } from './logger.js';
 
 dotenv.config();
 
@@ -19,7 +18,7 @@ app.get('/api/health', (req, res) => {
 
 app.post('/api/bookings', (req, res) => {
   const booking = req.body;
-  logger.info({ booking }, 'Received booking');
+  console.log('Received booking:', booking);
 
   res.status(201).json({
     success: true,
@@ -35,6 +34,6 @@ app.get('/api/bookings', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  logger.info(`Backend server running on http://localhost:${PORT}`);
-  logger.info(`API Health: http://localhost:${PORT}/api/health`);
+  console.log(`Backend server running on http://localhost:${PORT}`);
+  console.log(`API Health: http://localhost:${PORT}/api/health`);
 });
